@@ -22,7 +22,7 @@ import { RabbitmqService } from "./rabbitmq.service";
                     exchange: 'auth-exchange'
                 }
             ],
-            uri: 'amqp://guest:guest@localhost:5672/', //`${process.env.URI_RABBITMQ}`,
+            uri: process.env.RABBITMQ_URI,
             enableControllerDiscovery: false
         })
     ],
