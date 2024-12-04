@@ -6,6 +6,6 @@ export class AppService {
   constructor(private readonly rabbitMQ: RabbitmqService) {}
 
   testRPC(data: any): Promise<any> {
-    return this.rabbitMQ.rpcSend('auth-exchange', 'auth.test1', data);
+    return this.rabbitMQ.rpcSend('orders-exchange', 'orders.testWithOrders', data);
   }
 }
