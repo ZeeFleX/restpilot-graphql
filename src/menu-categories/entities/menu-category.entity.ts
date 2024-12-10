@@ -1,7 +1,11 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { IMenuCategory } from 'src/types/shared/entities';
 
 @ObjectType()
-export class MenuCategory {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+export class IMenuCategoryGraphQL implements IMenuCategory {
+  @Field(() => Int, { description: 'Unique ID of menu category' })
+  id: number;
+
+  @Field(() => String, { description: 'Name of category' })
+  categoryName: string;
 }

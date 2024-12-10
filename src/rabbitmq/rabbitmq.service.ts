@@ -5,15 +5,15 @@ import { Injectable } from '@nestjs/common';
 export class RabbitmqService {
   constructor(private readonly amqpConnection: AmqpConnection) {}
 
-  async rpcSend(exchange: string, routingKey: string, data: any) {
+  async rpcSend(exchange: string, routingKey: string, data?: any) {
     const response = await this.amqpConnection.request<any>({
-        exchange,
-        routingKey,
-        payload: {
-          request: data
-        },
-    })
+      exchange,
+      routingKey,
+      payload: {
+        request: data,
+      },
+    });
 
-    return response
+    return response;
   }
 }
