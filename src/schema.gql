@@ -13,3 +13,12 @@ type IMenuCategoryGraphQL {
 type Query {
   menuCategories: [IMenuCategoryGraphQL!]!
 }
+
+type Mutation {
+  createMenuCategory(createMenuCategoryInput: CreateMenuCategoryInput!): IMenuCategoryGraphQL!
+}
+
+input CreateMenuCategoryInput {
+  """Name of menu category"""
+  categoryName: String!
+}
