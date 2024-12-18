@@ -1,23 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { RabbitmqService } from 'src/rabbitmq/rabbitmq.service';
 import { CreateMenuCategoryInput } from './dto/menu-category.inputs';
+import { RabbitmqService } from 'src/rabbitmq/rabbitmq.service';
 
 @Injectable()
 export class MenuCategoriesService {
-  constructor(private readonly rabbitMQ: RabbitmqService) {}
-
+  constructor(private readonly RMQ: RabbitmqService) {}
   findAll() {
-    return this.rabbitMQ.rpcSend(
-      'menu-exchange',
-      'menu.menuCategories.findAll',
-    );
+    try {
+      return this.RMQ.rpcSend('menuService', 'menuCategories.findAll');
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 
   create(createMenuCategoryInput: CreateMenuCategoryInput) {
-    return this.rabbitMQ.rpcSend(
-      'menu-exchange',
-      'menu.menuCategories.create',
-      createMenuCategoryInput,
-    );
+    try {
+      return this.RMQ.rpcSend(
+        'menuService',
+        'menuCategories.create',
+        createMenuCategoryInput,
+      );
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 }

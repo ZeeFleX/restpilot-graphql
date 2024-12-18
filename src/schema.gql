@@ -10,15 +10,52 @@ type IMenuCategoryGraphQL {
   categoryName: String!
 }
 
+type Role {
+  name: String!
+}
+
+type SignupOutput {
+  id: ID!
+
+  """User phone number"""
+  phone: String!
+
+  """User role"""
+  role: Role!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type SigninOutput {
+  """JWT access token"""
+  access_token: String!
+}
+
 type Query {
   menuCategories: [IMenuCategoryGraphQL!]!
 }
 
 type Mutation {
   createMenuCategory(createMenuCategoryInput: CreateMenuCategoryInput!): IMenuCategoryGraphQL!
+  signup(signupInput: SignupInput!): SignupOutput!
+  signin(signinInput: SigninInput!): SigninOutput!
 }
 
 input CreateMenuCategoryInput {
   """Name of menu category"""
   categoryName: String!
+}
+
+input SignupInput {
+  phone: String!
+  password: String!
+}
+
+input SigninInput {
+  phone: String!
+  password: String!
 }

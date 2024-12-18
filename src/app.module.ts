@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { RabbitmqModule } from './rabbitmq/rabbirtmq.module';
+import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MenuCategoriesModule } from './menu-categories/menu-categories.module';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
     }),
     RabbitmqModule,
     MenuCategoriesModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

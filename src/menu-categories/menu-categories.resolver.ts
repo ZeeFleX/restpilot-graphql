@@ -3,13 +3,13 @@ import { MenuCategoriesService } from './menu-categories.service';
 import { IMenuCategoryGraphQL } from './entities';
 import { CreateMenuCategoryInput } from './dto/menu-category.inputs';
 
-@Resolver(() => IMenuCategoryGraphQL)
+@Resolver()
 export class MenuCategoriesResolver {
-  constructor(private readonly menuCategoriesService: MenuCategoriesService) {}
+  constructor(private readonly service: MenuCategoriesService) {}
 
   @Query(() => [IMenuCategoryGraphQL], { name: 'menuCategories' })
   findAll() {
-    return this.menuCategoriesService.findAll();
+    return this.service.findAll();
   }
 
   @Mutation(() => IMenuCategoryGraphQL, { name: 'createMenuCategory' })
@@ -17,6 +17,6 @@ export class MenuCategoriesResolver {
     @Args('createMenuCategoryInput')
     createMenuCategoryInput: CreateMenuCategoryInput,
   ) {
-    return this.menuCategoriesService.create(createMenuCategoryInput);
+    return this.service.create(createMenuCategoryInput);
   }
 }

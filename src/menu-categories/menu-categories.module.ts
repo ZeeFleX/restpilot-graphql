@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MenuCategoriesService } from './menu-categories.service';
 import { MenuCategoriesResolver } from './menu-categories.resolver';
-import { RabbitmqModule } from 'src/rabbitmq/rabbirtmq.module';
+import { RabbitmqModule } from 'src/rabbitmq/rabbitmq.module';
 
 @Module({
   imports: [RabbitmqModule],
