@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateMenuCategoryInput } from './dto/menu-category.inputs';
+import { CreateMenuCategoryInput } from './dto/menu-categories.inputs';
 import { RabbitmqService } from 'src/rabbitmq/rabbitmq.service';
 
 @Injectable()
-export class MenuCategoriesService {
+export class MenuService {
   constructor(private readonly RMQ: RabbitmqService) {}
   findAll() {
     try {

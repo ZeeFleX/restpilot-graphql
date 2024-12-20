@@ -1,6 +1,7 @@
 import { IUser } from 'src/types';
 import { Field, ObjectType, ID } from '@nestjs/graphql';
 import { IRole } from 'src/types';
+import { ISignInResponseDTO, ISignUpResponseDTO } from 'src/types';
 
 @ObjectType()
 class Role implements Partial<IRole> {
@@ -9,7 +10,7 @@ class Role implements Partial<IRole> {
 }
 
 @ObjectType()
-export class SignupOutput implements Partial<IUser> {
+export class SignUpOutput implements ISignUpResponseDTO {
   @Field(() => ID)
   id: number;
 
@@ -24,7 +25,7 @@ export class SignupOutput implements Partial<IUser> {
 }
 
 @ObjectType()
-export class SigninOutput {
+export class SignInOutput implements ISignInResponseDTO {
   @Field(() => String, { description: 'JWT access token' })
-  access_token: string;
+  accessToken: string;
 }

@@ -2,7 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type IMenuCategoryGraphQL {
+type IMenuCategoryEntity {
   """Unique ID of menu category"""
   id: Int!
 
@@ -14,7 +14,7 @@ type Role {
   name: String!
 }
 
-type SignupOutput {
+type SignUpOutput {
   id: ID!
 
   """User phone number"""
@@ -30,19 +30,19 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type SigninOutput {
+type SignInOutput {
   """JWT access token"""
-  access_token: String!
+  accessToken: String!
 }
 
 type Query {
-  menuCategories: [IMenuCategoryGraphQL!]!
+  menuCategories: [IMenuCategoryEntity!]!
 }
 
 type Mutation {
-  createMenuCategory(createMenuCategoryInput: CreateMenuCategoryInput!): IMenuCategoryGraphQL!
-  signup(signupInput: SignupInput!): SignupOutput!
-  signin(signinInput: SigninInput!): SigninOutput!
+  createMenuCategory(createMenuCategoryInput: CreateMenuCategoryInput!): IMenuCategoryEntity!
+  signup(signupInput: SignupInput!): SignUpOutput!
+  signin(signinInput: SigninInput!): SignInOutput!
 }
 
 input CreateMenuCategoryInput {

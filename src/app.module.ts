@@ -3,7 +3,7 @@ import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { MenuCategoriesModule } from './menu-categories/menu-categories.module';
+import { MenuModule } from './menu/menu.module';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { AuthModule } from './auth/auth.module';
 
@@ -16,7 +16,7 @@ import { AuthModule } from './auth/auth.module';
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     RabbitmqModule,
-    MenuCategoriesModule,
+    MenuModule,
     AuthModule,
   ],
   controllers: [],
