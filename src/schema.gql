@@ -2,12 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type IMenuCategoryEntity {
+type MenuCategoryEntity {
   """Unique ID of menu category"""
-  id: Int!
+  id: String!
 
   """Name of category"""
-  categoryName: String!
+  name: String!
 }
 
 type Role {
@@ -36,11 +36,11 @@ type SignInOutput {
 }
 
 type Query {
-  menuCategories: [IMenuCategoryEntity!]!
+  menuCategories: [MenuCategoryEntity!]!
 }
 
 type Mutation {
-  createMenuCategory(createMenuCategoryInput: CreateMenuCategoryInput!): IMenuCategoryEntity!
+  createMenuCategory(createMenuCategoryInput: CreateMenuCategoryInput!): MenuCategoryEntity!
   signUp(signUpInput: SignUpInput!): SignUpOutput!
   companySignUp(companySignUpInput: CompanySignUpInput!): SignUpOutput!
   signIn(signInInput: SignInInput!): SignInOutput!
@@ -48,7 +48,7 @@ type Mutation {
 
 input CreateMenuCategoryInput {
   """Name of menu category"""
-  categoryName: String!
+  name: String!
 }
 
 input SignUpInput {

@@ -1,12 +1,8 @@
 import { Field, InputType } from '@nestjs/graphql';
-import {
-  ISignInRequestDTO,
-  ISignUpRequestDTO,
-  ICompanySignUpRequestDTO,
-} from 'src/types';
+import { AuthDTO } from 'src/types/shared';
 
 @InputType()
-export class SignUpInput implements ISignUpRequestDTO {
+export class SignUpInput implements AuthDTO.Request.SignUp {
   @Field(() => String)
   phone: string;
 
@@ -15,7 +11,7 @@ export class SignUpInput implements ISignUpRequestDTO {
 }
 
 @InputType()
-export class CompanySignUpInput implements ICompanySignUpRequestDTO {
+export class CompanySignUpInput implements AuthDTO.Request.CompanySignUp {
   @Field(() => String)
   phone: string;
 
@@ -30,7 +26,7 @@ export class CompanySignUpInput implements ICompanySignUpRequestDTO {
 }
 
 @InputType()
-export class SignInInput implements ISignInRequestDTO {
+export class SignInInput implements AuthDTO.Request.SignIn {
   @Field(() => String)
   phone: string;
 

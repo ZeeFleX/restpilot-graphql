@@ -56,7 +56,7 @@ export class AuthService {
   async signIn(signInInput: SignInInput) {
     try {
       const response = await lastValueFrom(
-        this.RMQ.rpcSend('authService', 'user.signin', signInInput),
+        this.RMQ.rpcSend('authService', 'auth.user.signIn', signInInput),
       );
 
       if (response.error) {

@@ -7,7 +7,7 @@ export class MenuService {
   constructor(private readonly RMQ: RabbitmqService) {}
   findAll() {
     try {
-      return this.RMQ.rpcSend('menuService', 'menuCategories.findAll');
+      return this.RMQ.rpcSend('menuService', 'menu.categories.findAll');
     } catch (error) {
       console.log(error);
       return error;
@@ -18,7 +18,7 @@ export class MenuService {
     try {
       return this.RMQ.rpcSend(
         'menuService',
-        'menuCategories.create',
+        'menu.categories.create',
         createMenuCategoryInput,
       );
     } catch (error) {

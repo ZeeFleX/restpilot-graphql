@@ -1,16 +1,14 @@
-import { IUser } from 'src/types';
+import { AuthEntities, AuthDTO } from 'src/types/shared';
 import { Field, ObjectType, ID } from '@nestjs/graphql';
-import { IRole } from 'src/types';
-import { ISignInResponseDTO, ISignUpResponseDTO } from 'src/types';
 
 @ObjectType()
-class Role implements Partial<IRole> {
+class Role implements Partial<AuthEntities.Role> {
   @Field(() => String)
   name: string;
 }
 
 @ObjectType()
-export class SignUpOutput implements ISignUpResponseDTO {
+export class SignUpOutput implements AuthDTO.Response.SignUp {
   @Field(() => ID)
   id: number;
 
@@ -25,7 +23,7 @@ export class SignUpOutput implements ISignUpResponseDTO {
 }
 
 @ObjectType()
-export class SignInOutput implements ISignInResponseDTO {
+export class SignInOutput implements AuthDTO.Response.SignIn {
   @Field(() => String, { description: 'JWT access token' })
   accessToken: string;
 }
