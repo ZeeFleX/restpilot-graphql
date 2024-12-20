@@ -6,6 +6,8 @@ import {
 } from './dto/auth.inputs';
 import { RabbitmqService } from 'src/rabbitmq/rabbitmq.service';
 import { lastValueFrom } from 'rxjs';
+import { HttpException, HttpStatus } from '@nestjs/common';
+import { GraphQLError } from 'graphql';
 
 @Injectable()
 export class AuthService {
@@ -42,14 +44,11 @@ export class AuthService {
         ),
       );
 
-      if (response.error) {
-        throw new Error(response.error.message);
-      }
-
       return response;
     } catch (error) {
-      console.log(error);
-      throw new Error(`Registration failed: ${error.message}`);
+      throw new GraphQLError('Ошибка при регистрации компании', {
+        extensions: { code: 'ERROR' },
+      });
     }
   }
 

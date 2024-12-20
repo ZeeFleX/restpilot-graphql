@@ -21,14 +21,37 @@ type SignUpOutput {
   phone: String!
 
   """User role"""
-  role: Role!
-  createdAt: DateTime!
+  role: Role
+
+  """User creation date"""
+  createdAt: DateTime
 }
 
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type CompanyEntity {
+  id: ID!
+
+  """Company name"""
+  name: String!
+
+  """Company address"""
+  address: String!
+
+  """Company creation date"""
+  createdAt: DateTime
+}
+
+type CompanySignUpOutput {
+  """User data"""
+  user: SignUpOutput!
+
+  """Company data"""
+  company: CompanyEntity!
+}
 
 type SignInOutput {
   """JWT access token"""
@@ -42,7 +65,7 @@ type Query {
 type Mutation {
   createMenuCategory(createMenuCategoryInput: CreateMenuCategoryInput!): MenuCategoryEntity!
   signUp(signUpInput: SignUpInput!): SignUpOutput!
-  companySignUp(companySignUpInput: CompanySignUpInput!): SignUpOutput!
+  companySignUp(companySignUpInput: CompanySignUpInput!): CompanySignUpOutput!
   signIn(signInInput: SignInInput!): SignInOutput!
 }
 

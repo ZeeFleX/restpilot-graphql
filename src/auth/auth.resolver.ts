@@ -5,7 +5,11 @@ import {
   SignInInput,
   CompanySignUpInput,
 } from './dto/auth.inputs';
-import { SignUpOutput, SignInOutput } from './dto/auth.outputs';
+import {
+  SignUpOutput,
+  SignInOutput,
+  CompanySignUpOutput,
+} from './dto/auth.outputs';
 
 @Resolver('Auth')
 export class AuthResolver {
@@ -18,10 +22,10 @@ export class AuthResolver {
     return this.service.signUp(signupInput);
   }
 
-  @Mutation(() => SignUpOutput, { name: 'companySignUp' })
+  @Mutation(() => CompanySignUpOutput, { name: 'companySignUp' })
   async companySignUp(
     @Args('companySignUpInput') companySignupInput: CompanySignUpInput,
-  ): Promise<SignUpOutput> {
+  ): Promise<CompanySignUpOutput> {
     return this.service.companySignUp(companySignupInput);
   }
 
