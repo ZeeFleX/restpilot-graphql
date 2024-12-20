@@ -41,8 +41,9 @@ type Query {
 
 type Mutation {
   createMenuCategory(createMenuCategoryInput: CreateMenuCategoryInput!): IMenuCategoryEntity!
-  signup(signupInput: SignupInput!): SignUpOutput!
-  signin(signinInput: SigninInput!): SignInOutput!
+  signUp(signUpInput: SignUpInput!): SignUpOutput!
+  companySignUp(companySignUpInput: CompanySignUpInput!): SignUpOutput!
+  signIn(signInInput: SignInInput!): SignInOutput!
 }
 
 input CreateMenuCategoryInput {
@@ -50,12 +51,19 @@ input CreateMenuCategoryInput {
   categoryName: String!
 }
 
-input SignupInput {
+input SignUpInput {
   phone: String!
   password: String!
 }
 
-input SigninInput {
+input CompanySignUpInput {
+  phone: String!
+  password: String!
+  name: String!
+  address: String!
+}
+
+input SignInInput {
   phone: String!
   password: String!
 }

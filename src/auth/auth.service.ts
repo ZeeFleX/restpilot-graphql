@@ -1,5 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { SignupInput, SigninInput } from './dto/auth.inputs';
+import {
+  SignUpInput,
+  SignInInput,
+  CompanySignUpInput,
+} from './dto/auth.inputs';
 import { RabbitmqService } from 'src/rabbitmq/rabbitmq.service';
 import { lastValueFrom } from 'rxjs';
 
@@ -7,13 +11,15 @@ import { lastValueFrom } from 'rxjs';
 export class AuthService {
   constructor(private readonly RMQ: RabbitmqService) {}
 
-  async signup(signupInput: SignupInput) {
+  async signUp(signUpInput: SignUpInput) {
     try {
       const response = await lastValueFrom(
-        this.RMQ.rpcSend('authService', 'user.signup', signupInput),
+        this.RMQ.rpcSend(
+          'coordinatorService',
+          'coordinator.user.signUp',
+          signUpInput,
+        ),
       );
-
-      console.log(response);
 
       if (response.error) {
         throw new Error(response.error.message);
@@ -26,10 +32,31 @@ export class AuthService {
     }
   }
 
-  async signin(signinInput: SigninInput) {
+  async companySignUp(companySignUpInput: CompanySignUpInput) {
     try {
       const response = await lastValueFrom(
-        this.RMQ.rpcSend('authService', 'user.signin', signinInput),
+        this.RMQ.rpcSend(
+          'coordinatorService',
+          'coordinator.company.signUp',
+          companySignUpInput,
+        ),
+      );
+
+      if (response.error) {
+        throw new Error(response.error.message);
+      }
+
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw new Error(`Registration failed: ${error.message}`);
+    }
+  }
+
+  async signIn(signInInput: SignInInput) {
+    try {
+      const response = await lastValueFrom(
+        this.RMQ.rpcSend('authService', 'user.signin', signInInput),
       );
 
       if (response.error) {

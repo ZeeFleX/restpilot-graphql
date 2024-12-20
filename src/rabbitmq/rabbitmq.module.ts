@@ -29,6 +29,17 @@ import { RabbitmqService } from './rabbitmq.service';
           },
         },
       },
+      {
+        name: 'COORDINATOR_SERVICE',
+        transport: Transport.RMQ,
+        options: {
+          urls: [process.env.RABBITMQ_URI],
+          queue: 'coordinator-service',
+          queueOptions: {
+            durable: true,
+          },
+        },
+      },
     ]),
   ],
   providers: [RabbitmqService],

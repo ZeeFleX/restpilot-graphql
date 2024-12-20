@@ -7,6 +7,8 @@ export class RabbitmqService {
   constructor(
     @Inject('AUTH_SERVICE') private readonly authService: ClientProxy,
     @Inject('MENU_SERVICE') private readonly menuService: ClientProxy,
+    @Inject('COORDINATOR_SERVICE')
+    private readonly coordinatorService: ClientProxy,
   ) {}
 
   rpcSend(
