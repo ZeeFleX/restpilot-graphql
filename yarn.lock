@@ -4738,6 +4738,9 @@ sha.js@^2.4.11:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
+"shared-functions@file:../shared-functions":
+  version "1.0.0"
+
 "shared-types@file:../shared-types":
   version "1.0.0"
 
