@@ -10,7 +10,7 @@ class Role implements Partial<AuthEntities.Role> {
 @ObjectType()
 export class SignUpOutput implements AuthDTO.Response.SignUp {
   @Field(() => ID)
-  id: number;
+  id: string;
 
   @Field(() => String, { description: 'User phone number' })
   phone: string;
