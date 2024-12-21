@@ -1,5 +1,6 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { AuthService } from './auth.service';
+import { Logger } from 'shared-functions';
 import {
   SignUpInput,
   SignInInput,
@@ -16,6 +17,7 @@ export class AuthResolver {
   constructor(private readonly service: AuthService) {}
 
   @Mutation(() => SignUpOutput, { name: 'signUp' })
+  @Logger('green')
   async signUp(
     @Args('signUpInput') signupInput: SignUpInput,
   ): Promise<SignUpOutput> {
@@ -23,6 +25,7 @@ export class AuthResolver {
   }
 
   @Mutation(() => CompanySignUpOutput, { name: 'companySignUp' })
+  @Logger('green')
   async companySignUp(
     @Args('companySignUpInput') companySignupInput: CompanySignUpInput,
   ): Promise<CompanySignUpOutput> {
@@ -30,6 +33,7 @@ export class AuthResolver {
   }
 
   @Mutation(() => SignInOutput, { name: 'signIn' })
+  @Logger('green')
   async signIn(
     @Args('signInInput') signinInput: SignInInput,
   ): Promise<SignInOutput> {

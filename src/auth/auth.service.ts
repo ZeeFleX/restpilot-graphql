@@ -6,13 +6,14 @@ import {
 } from './dto/auth.inputs';
 import { RabbitmqService } from 'src/rabbitmq/rabbitmq.service';
 import { lastValueFrom } from 'rxjs';
-import { HttpException, HttpStatus } from '@nestjs/common';
 import { GraphQLError } from 'graphql';
+import { Logger } from 'shared-functions';
 
 @Injectable()
 export class AuthService {
   constructor(private readonly RMQ: RabbitmqService) {}
 
+  @Logger('green')
   async signUp(signUpInput: SignUpInput) {
     try {
       const response = await lastValueFrom(
@@ -35,6 +36,7 @@ export class AuthService {
     }
   }
 
+  @Logger('green')
   async companySignUp(companySignUpInput: CompanySignUpInput) {
     try {
       const response = await lastValueFrom(
@@ -57,6 +59,7 @@ export class AuthService {
     }
   }
 
+  @Logger('green')
   async signIn(signInInput: SignInInput) {
     try {
       const response = await lastValueFrom(
