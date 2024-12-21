@@ -24,13 +24,14 @@ export class AuthService {
       );
 
       if (response.error) {
-        throw new Error(response.error.message);
+        throw new GraphQLError(response.error.message, {
+          extensions: response.error,
+        });
       }
 
       return response;
     } catch (error) {
-      console.log(error);
-      throw new Error(`Registration failed: ${error.message}`);
+      return error;
     }
   }
 
@@ -44,11 +45,15 @@ export class AuthService {
         ),
       );
 
+      if (response.error) {
+        throw new GraphQLError(response.error.message, {
+          extensions: response.error,
+        });
+      }
+
       return response;
     } catch (error) {
-      throw new GraphQLError('Ошибка при регистрации компании', {
-        extensions: { code: 'ERROR' },
-      });
+      return error;
     }
   }
 
