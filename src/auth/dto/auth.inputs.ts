@@ -1,5 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { AuthDTO } from 'src/types/shared';
+import { AuthDTO } from 'shared-types';
 
 @InputType()
 export class SignUpInput implements AuthDTO.Request.SignUp {

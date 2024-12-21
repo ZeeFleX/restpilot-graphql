@@ -1,4 +1,4 @@
-import { MenuDTO } from 'src/types/shared';
+import { MenuDTO } from 'shared-types';
 import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()

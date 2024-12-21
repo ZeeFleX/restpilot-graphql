@@ -1,4 +1,4 @@
-import { AuthEntities, AuthDTO, CompaniesEntities } from 'src/types/shared';
+import { AuthEntities, AuthDTO, CompaniesEntities } from 'shared-types';
 import { Field, ObjectType, ID } from '@nestjs/graphql';
 
 @ObjectType()

@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { MenuEntities } from 'src/types/shared';
+import { MenuEntities } from 'shared-types';
 
 @ObjectType()
 export class MenuCategoryEntity implements MenuEntities.Category {
