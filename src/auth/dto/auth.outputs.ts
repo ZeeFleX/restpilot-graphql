@@ -62,7 +62,46 @@ export class CompanySignUpOutput implements AuthDTO.Response.CompanySignUp {
 }
 
 @ObjectType()
+export class RoleEntity implements Partial<AuthEntities.Role> {
+  @Field(() => String)
+  name: string;
+
+  @Field(() => String, { nullable: true })
+  description: string;
+}
+
+@ObjectType()
+export class UserEntity implements Partial<AuthEntities.User> {
+  @Field(() => ID)
+  id: string;
+
+  @Field(() => String, { description: 'User phone number' })
+  phone: string;
+
+  @Field(() => String, { description: 'User email' })
+  email: string;
+
+  @Field(() => String, { description: 'User first name' })
+  firstname: string;
+
+  @Field(() => String, { description: 'User last name' })
+  lastname: string;
+
+  @Field(() => String, { description: 'User surname' })
+  surname: string;
+
+  @Field(() => Role, { description: 'User role', nullable: true })
+  role: Role;
+
+  @Field(() => Date, { description: 'User creation date', nullable: true })
+  createdAt: Date;
+}
+
+@ObjectType()
 export class SignInOutput implements AuthDTO.Response.SignIn {
   @Field(() => String, { description: 'JWT access token' })
   accessToken: string;
+
+  @Field(() => UserEntity, { description: 'User data' })
+  user: UserEntity;
 }

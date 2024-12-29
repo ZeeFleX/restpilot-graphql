@@ -67,12 +67,14 @@ export class AuthService {
       );
 
       if (response.error) {
-        throw new Error(response.error.message);
+        throw new GraphQLError(response.error.message, {
+          extensions: response.error,
+        });
       }
 
       return response;
     } catch (error) {
-      throw new Error(`Sign in failed: ${error.message}`);
+      return error;
     }
   }
 }

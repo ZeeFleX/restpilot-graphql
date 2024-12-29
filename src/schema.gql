@@ -68,9 +68,37 @@ type CompanySignUpOutput {
   company: CompanyEntity!
 }
 
+type UserEntity {
+  id: ID!
+
+  """User phone number"""
+  phone: String!
+
+  """User email"""
+  email: String!
+
+  """User first name"""
+  firstname: String!
+
+  """User last name"""
+  lastname: String!
+
+  """User surname"""
+  surname: String!
+
+  """User role"""
+  role: Role
+
+  """User creation date"""
+  createdAt: DateTime
+}
+
 type SignInOutput {
   """JWT access token"""
   accessToken: String!
+
+  """User data"""
+  user: UserEntity!
 }
 
 type Query {
