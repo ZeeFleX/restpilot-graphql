@@ -20,6 +20,18 @@ type SignUpOutput {
   """User phone number"""
   phone: String!
 
+  """User email"""
+  email: String
+
+  """User firstname"""
+  firstname: String!
+
+  """User lastname"""
+  lastname: String
+
+  """User surname"""
+  surname: String
+
   """User role"""
   role: Role
 
@@ -36,10 +48,13 @@ type CompanyEntity {
   id: ID!
 
   """Company name"""
-  name: String!
+  companyName: String!
 
   """Company address"""
   address: String!
+
+  """Company inn"""
+  inn: String!
 
   """Company creation date"""
   createdAt: DateTime
@@ -76,13 +91,24 @@ input CreateMenuCategoryInput {
 
 input SignUpInput {
   phone: String!
+  email: String!
+  firstname: String!
+  lastname: String!
+  surname: String
   password: String!
+  confirmPassword: String!
 }
 
 input CompanySignUpInput {
   phone: String!
+  email: String!
+  firstname: String!
+  lastname: String!
+  surname: String
   password: String!
-  name: String!
+  confirmPassword: String!
+  companyName: String!
+  inn: String!
   address: String!
 }
 

@@ -7,7 +7,22 @@ export class SignUpInput implements AuthDTO.Request.SignUp {
   phone: string;
 
   @Field(() => String)
+  email: string;
+
+  @Field(() => String)
+  firstname: string;
+
+  @Field(() => String)
+  lastname: string;
+
+  @Field(() => String, { nullable: true })
+  surname: string;
+
+  @Field(() => String)
   password: string;
+
+  @Field(() => String)
+  confirmPassword: string;
 }
 
 @InputType()
@@ -16,10 +31,28 @@ export class CompanySignUpInput implements AuthDTO.Request.CompanySignUp {
   phone: string;
 
   @Field(() => String)
+  email: string;
+
+  @Field(() => String)
+  firstname: string;
+
+  @Field(() => String)
+  lastname: string;
+
+  @Field(() => String, { nullable: true })
+  surname: string;
+
+  @Field(() => String)
   password: string;
 
   @Field(() => String)
-  name: string;
+  confirmPassword: string;
+
+  @Field(() => String)
+  companyName: string;
+
+  @Field(() => String)
+  inn: string;
 
   @Field(() => String)
   address: string;

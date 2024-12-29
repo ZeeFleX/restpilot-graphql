@@ -15,6 +15,18 @@ export class SignUpOutput implements AuthDTO.Response.SignUp {
   @Field(() => String, { description: 'User phone number' })
   phone: string;
 
+  @Field(() => String, { description: 'User email', nullable: true })
+  email: string;
+
+  @Field(() => String, { description: 'User firstname' })
+  firstname: string;
+
+  @Field(() => String, { description: 'User lastname', nullable: true })
+  lastname: string;
+
+  @Field(() => String, { description: 'User surname', nullable: true })
+  surname: string;
+
   @Field(() => Role, { description: 'User role', nullable: true })
   role: Role;
 
@@ -28,10 +40,13 @@ export class CompanyEntity implements Partial<CompaniesEntities.Company> {
   id: string;
 
   @Field(() => String, { description: 'Company name' })
-  name: string;
+  companyName: string;
 
   @Field(() => String, { description: 'Company address' })
   address: string;
+
+  @Field(() => String, { description: 'Company inn' })
+  inn: string;
 
   @Field(() => Date, { description: 'Company creation date', nullable: true })
   createdAt: Date;
